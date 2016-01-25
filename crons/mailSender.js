@@ -5,27 +5,27 @@ module.exports = function () {
 
   new CronJob('* * * * *', function() {
 
-    console.log('You will see this message every second');
+    console.log('You will see this message ,when resource would be available to process your request');
     console.log('sending mail');  
     var smtpTransport = nodemailer.createTransport("SMTP",{
      service: "Gmail",  // sets automatically host, port and connection security settings
      auth: {
-       user: "hardik.munjal@polestarllp.com",
-       pass: "timeforchange2"
+       user: "aman.maurya@polestarllp.com",
+       pass: "*******"
      }
    });
 
 smtpTransport.sendMail({  //email options
-   from: "hardik <hardik.munjal@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
+   from: "Aman <aman.maurya@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
    to: "draka <api.integration@paytm.com>", // receiver
-   subject: "Emailing with nodemailer 2", // subject
+   subject: "Merchant Records", // subject
    text: "nodemailer", // body
-   html: '<table><tr><th>Merchant_id</th><th>Salary</th></tr><tr><td>Ramesh Raman</td><td>5000</td></tr><tr><td>Shabbir Hussein</td><td>7000</td></tr></table>', // html body
+   html: '<table><tr><th>Merchant_id</th><th>Merchant name</th></tr><tr><td>121</td><td>Atul aggr</td></tr><tr><td>122</td><td>navin</td></tr></table>', // html body
    attachments: [
 
    { 
-    filename: "somepicture.csv",    
-    contents: new Buffer('1997,Ford,E350', 'UTF-8')  // html body
+    filename: "merchant_data.csv",    
+    contents: new Buffer('100001,api.integration', 'UTF-8')  // html body
    }   
   ]   
 }, function(error, response){  //callback
