@@ -1,0 +1,14 @@
+{
+  "name": "merchant-notifier-module",
+  "description": "merchant mailer weekly",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.24",
+    "npm": "2.14.0"
+  },
+  "dependencies": {
+    "express": "4.4.5",
+    "nodemailer":"0.7.1",
+    "cron":"1.0.0"
+  }
+}
