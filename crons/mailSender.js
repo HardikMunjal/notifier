@@ -21,7 +21,9 @@ var smtp = function(email,callback){
 debugger;
 console.log(email);
 
-  smtpTransport.sendMail({  //email options
+
+***************************** email body configuration ********************************
+var emailConfig = {  //email options
    from: "Aman <hardik.munjal@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
    to: email, // receiver
    subject: "Merchant Records", // subject
@@ -34,7 +36,8 @@ console.log(email);
     contents: new Buffer('100001,api.integration', 'UTF-8')  // html body
    }   
   ]   
-}, function(error, response){  //callback
+};
+  smtpTransport.sendMail(emailConfig, function(error, response){  //callback
  if(error){
    callback(error);
  }else{
