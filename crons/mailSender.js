@@ -1,5 +1,6 @@
 var nodemailer = require("nodemailer");
 var CronJob = require('cron').CronJob;
+var async = require("async");
 
 module.exports = function () {
 
@@ -10,17 +11,22 @@ module.exports = function () {
     var smtpTransport = nodemailer.createTransport("SMTP",{
      service: "Gmail",  // sets automatically host, port and connection security settings
      auth: {
-       user: "aman.maurya@polestarllp.com",
-       pass: "*******"
+       user: "hardik.munjal@polestarllp.com",
+       pass: "timeforchangex"
      }
    });
 
-smtpTransport.sendMail({  //email options
-   from: "Aman <aman.maurya@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
-   to: "draka <api.integration@paytm.com>", // receiver
+var listofemails = ["<hardik.munjaal@gmail.com","api.integration@paytm.com"];
+var smtp = function(email,callback){
+debugger;
+console.log(email);
+
+  smtpTransport.sendMail({  //email options
+   from: "Aman <hardik.munjal@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
+   to: email, // receiver
    subject: "Merchant Records", // subject
    text: "nodemailer", // body
-   html: '<table><tr><th>Merchant_id</th><th>Merchant name</th></tr><tr><td>121</td><td>Atul aggr</td></tr><tr><td>122</td><td>navin</td></tr></table>', // html body
+   html: '', // html body
    attachments: [
 
    { 
@@ -30,13 +36,27 @@ smtpTransport.sendMail({  //email options
   ]   
 }, function(error, response){  //callback
  if(error){
-   console.log(error);
+   callback(error);
  }else{
    console.log("Message sent: " + response.message);
+   callback();
  }
 
    //smtpTransport.close(); // shut down the connection pool, no more messages.  Comment this line out to continue sending emails.
- });
+ })
+}
+
+async.eachLimit(listofemails,2,smtp,function(err){
+        if (err){
+          console.log(err);
+        
+
+        return process.exit(0);
+      }
+        // console.log(success_email);
+        // console.log(failure_email);
+     });
+
 }, null, true, 'America/Los_Angeles');
 
 };
