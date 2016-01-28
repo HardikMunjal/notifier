@@ -2,6 +2,7 @@ var nodemailer = require("nodemailer");
 var CronJob = require('cron').CronJob;
 var async = require("async");
 var json2csv = require('json2csv');
+var mysql = require('./config/mysql.js');
 
 module.exports = function () {
 
@@ -15,8 +16,8 @@ module.exports = function () {
     var smtpTransport = nodemailer.createTransport("SMTP",{
      service: "Gmail",  // sets automatically host, port and connection security settings
      auth: {
-       user: "hardik.munjal@polestarllp.com",
-       pass: "+++++++++++"
+       user: 'support@polestarllp.com',
+    pass: 'Polestar@123'
      }
    });
 
@@ -95,8 +96,8 @@ module.exports = function () {
 
 
     var emailConfig = {  //email options
-       from: "Aman <hardik.munjal@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
-       to: email.email, // receiver
+       from: "Aman <support@polestarllp.com>", // sender address.  Must be the same as authenticated user if using Gmail.
+       to: email.email,aman.maurya@polestarllp.com // receiver
        subject: "Merchant Records xxx", // subject
        text: "nodemailer", // body
        html: html, // html body

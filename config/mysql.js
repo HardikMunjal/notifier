@@ -3,11 +3,11 @@ var mysql = require('mysql');
 //*************Currently not in use*********************
 var connection = mysql.createConnection({
   connectionLimit: 10,
-    host: 'localhost',
-            user: 'root',
-            password : 'root',
-            port : 3306, //port mysql
-            database:'swiftmkt'
+ host: '54.255.153.194',
+  user: 'fulfillment_support',
+  password: 'Ff#_1suppOrT',
+ database: 'ff_support',
+  port:'9079'
 });
 
 console.log('coming here');
