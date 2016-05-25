@@ -21,18 +21,18 @@ merchantInventory. getMerchantInventorySummary(options, function(err, result) {
 
 module.exports = function () {
 
-  new CronJob('0-15 1 1 * *', function() {
+  new CronJob('*/1 * * * *', function() {
 
     console.log('You will see this message ,when resource would be available to process your request');
     console.log('sending mail');  
 
 
-   // ********************************gmail credential*********************************
+   // ******************************** gmail credential *********************************
    var smtpTransport = nodemailer.createTransport("SMTP",{
      service: "Gmail",  // sets automatically host, port and connection security settings
      auth: {
        user: "hardik.munjal@polestarllp.com",
-       pass: "timeforchangex"
+       pass: "timeforchange1x"
      }
    });
 
@@ -47,14 +47,14 @@ module.exports = function () {
     var listofemails = ["hardik.munjaal@gmail.com","api.integration@paytm.com"];
 
 
-    dummyMerchantRecord.forEach(function(mr){
-      merchantEmails.forEach
-    })
+    // dummyMerchantRecord.forEach(function(mr){
+    //   merchantEmails.forEach
+    // })
 
 
-    headers.forEach(function(header) {
-      csv += escapeString(header) + ',';
-    });
+    // headers.forEach(function(header) {
+    //   csv += escapeString(header) + ',';
+    // });
 
 
 
@@ -152,6 +152,21 @@ var smtp = function(email,callback) {
      };
 
 
+
+
+
+      // smtpTransport.receiveMail(emailConfig,function(error, response){
+      //  if(error){
+      //   var error =new Error('Email not received');
+      //   console.log("error :",error);
+      //   callback(error);
+      //  }
+      //  console.log("message successfull received");
+      //  callback();
+
+
+      // })
+      // smtpTRansport.close();// close the connection according to the requirement
 
     //******************************smtp send mail method *********************************************
       smtpTransport.sendMail(emailConfig, function(error, response){  //callback
